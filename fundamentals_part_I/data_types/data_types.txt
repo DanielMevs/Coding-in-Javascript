@@ -1,0 +1,32 @@
+DATA TYPES
+
+1. Number: floating point numbers
+L> Used for decimals and integers
+
+2. String: sequence of characters
+L> Used for text
+
+3. Boolean: Logical type that can
+    be true or false
+L> Used for taking decisions
+
+4. Undefined: Value taken by a var-
+    iable that is not yet defined
+L> 'Empty value'
+
+5. Null: Also means 'empty value'
+
+6. Symbol: Value that is unique
+    and cannot be changed
+
+7. BigInt: larger integers than the
+    Number type can hold
+
+Javascript has dynamic typing: We
+    do not have to manually define
+    the data type of the value
+    stored in a variable. 
+L> Instead, data types are determined
+    automatically
+    
+* Value has type, NOT variable
