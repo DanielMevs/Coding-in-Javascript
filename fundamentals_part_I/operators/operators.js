@@ -35,12 +35,40 @@ const now = 2037;
 const ageJohn = now - 1991;
 const ageSarah = now - 2018;
 
-console.log(now - 1991 > now - 2018);
+// console.log(now - 1991 > now - 2018);
 
 let x, y;
 
 x = y = 20 - 10;
-console.log(x, y);
+// console.log(x, y);
 
 const avgAge = (ageJohn + ageSarah) / 2;
-console.log(ageJohn, ageSarah, avgAge);
+// console.log(ageJohn, ageSarah, avgAge);
+
+// const age = 18;
+const age = "18";
+// === strict equality operator does not do type coercion
+if (age === 18) {
+  console.log("You just became an adult. (strict)");
+}
+// == loo
+
+if (age == 18) {
+  //   console.log("You just became an adult.(loose)");
+}
+
+const favorite = Number(prompt("What's your favorite number?"));
+console.log(favorite);
+console.log(typeof favorite);
+
+if (favorite === 23) {
+  console.log("Cool! 23 is an amazing number!");
+} else if (favorite === 7) {
+  console.log("7 is also a cool number");
+} else {
+  console.log("Number is not 23 or 7");
+}
+
+if (favorite !== 23) {
+  console.log("Why not 23?");
+}
