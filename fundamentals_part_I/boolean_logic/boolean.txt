@@ -1,0 +1,27 @@
+Boolean Logic: The And, Or & Not Operators
+
+A: Sarah has a driver's liicense
+B: Sarah has good vision
+
+A and B 
+"Sarah has a driver's license 
+AND good vision"
+
+AND True False
+True  T   F
+False F   F 
+
+A or B 
+"Sarah has a driver's license 
+OR good vision"
+
+OR  True False
+True  T   T
+False T   F 
+
+Not A, Not B
+Iverts true/false value
+
+Boolean Variables
+A: Age is greater or equal 20
+B: Age is less than 30
