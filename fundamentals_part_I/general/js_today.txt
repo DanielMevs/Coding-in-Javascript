@@ -1,0 +1,21 @@
+How to Use Modern Javascript Today
+
+During development: Simply use the latest Google Chrome!
+
+During production: Use Babel to transpile and polyfill
+your code (converting back to ES5 to ensure browser
+compatibility for all users).
+
+ES5 -> Fully supported in all browsers
+L> Ready to be used Today
+
+ES6+: Well supported in all modern browsers
+L> No support in older browsers
+L> Can use most features in production with
+transpiling and polyfilling
+
+ES2021 - infinity
+L> ESNext: Future versions of the language
+(new feature proposal that reach Stage 4)
+L> Can already use some features in production
+with transpiling and polyfilling.
