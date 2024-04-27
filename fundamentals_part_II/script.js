@@ -74,7 +74,7 @@ const yearsUntilRetirement = (birthYear, firstName) => {
 console.log(yearsUntilRetirement(1991, "John"));
 console.log(yearsUntilRetirement(1980, "Bob"));
 */
-
+/*
 function cutFruitPieces(fruit) {
   return fruit * 4;
 }
@@ -97,8 +97,10 @@ const yearsUntilRetirement = function (birthYear, firstName) {
   const age = calcAge(birthYear);
   const retirement = 65 - age;
   if (retirement > 0) {
+    console.log(`${firstName} retires in ${retirement} years`);
     return retirement;
   } else {
+    console.log(`${firstName} has already retired`);
     return -1;
   }
 
@@ -106,3 +108,44 @@ const yearsUntilRetirement = function (birthYear, firstName) {
   // years`;
 };
 console.log(yearsUntilRetirement(1991, "Mike"));
+console.log(yearsUntilRetirement(1970, "Jones"));
+*/
+
+// Arrays
+
+const friends = ["Michael", "Steven", "Peter"];
+console.log(friends);
+
+// const years = new Array(1991, 1984, 2008, 2020);
+console.log(friends[0]);
+console.log(friends[2]);
+
+console.log(friends.length);
+
+// Getting the last element in the array
+console.log(friends[friends.length - 1]);
+
+friends[2] = "Jay";
+console.log(friends);
+
+// Arrays can hold values of different types
+const example = ["John", 33, true, friends];
+console.log(example);
+
+// Exercise
+const calcAge = function (birthYear) {
+  return 2037 - birthYear;
+};
+const years = [1990, 1960, 2002, 2018, 2010];
+
+console.log(calcAge(years[0]));
+console.log(calcAge(years[1]));
+console.log(calcAge(years[years.length - 1]));
+
+const ages = [
+  calcAge(years[0]),
+  calcAge(years[1]),
+  calcAge(years[years.length - 1]),
+];
+
+console.log(ages);
