@@ -1,0 +1,59 @@
+DOM
+
+What is the DOM?
+
+DOM: Document Object Model
+L> Structured representation of
+HTML documents. Allos Javascript
+to access HTML elements and styles
+to manipulate them.
+
+The DOM Tree Structure
+
+        Document
+            |
+         Element
+          <html>
+          /     \
+    Element      Element
+    <head>       <body>
+      /           /    \
+    Element     Element Element
+<title>      <section>  <section>
+   |          /   \         \
+ TEXT     Element Element   Element
+"Sample"    <p>    <p>       <img>
+            / \       \          
+       Element Text   Text
+        <a>   "Red"    "Blue"  
+         |
+        Text
+       "link"
+
+DOM != Javascript
+DOM Methods and Properties for
+DOM manipulation are not part
+of Javascript
+
+
+
+Web APIs, or
+Application Programming
+Interface, offer
+DOM Methods and Properties
+that can can interact with
+Javascript.
+APIs are libraries that
+are also written in 
+Javascript and are 
+automatically available
+for us to use.
+
+There is a DOM specification
+that browsers like Chrome
+and Safari implement.
+
+Other Web APIs provided
+by browsers include 
+Timers, Fetch and
+many more.
