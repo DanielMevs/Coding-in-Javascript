@@ -1,0 +1,264 @@
+Javascript
+
+
+High-level
+L> Any computer program needs resources
+- There are low level programming
+languages such as C where the 
+developer has to manage resources
+manually
+- There are high level languages
+where the developer does not have
+to worry, everything happens
+automatically.
+L> These lanuages have abstractions
+which handles that work for us
+L> Easier to learn but not as 
+fast or optimized as programs
+written in C, for example.
+
+Garbage-collection
+L> An algorithm inside the 
+Javascript engine which
+automatically removes old, unused
+objects from the computer memory.
+
+Interpreted or just-in-time compiled
+- Human readable Javascript code is 
+an abstraction over machine code.
+- This code is eventually translated/
+converted to machine code (compiling)
+- In the case of Javascript, this 
+happens inside the Javascript 
+engine.
+
+Multi-paradigm
+L> A paradigm is an approach and
+mindset of structuring code, 
+which will direct your coding
+style and technique.
+1. Procedural programming
+2. Object-oriented programming (OOP)
+3. Functional programming (FP)
+
+Prototype-based object-oriented
+L> Let take arrays. Arrays are
+built from the Array Prototype.
+Our aray inherits methods from
+the prototype.
+L> A prototype is like a blue-
+print.
+
+First-class Functions
+L> In a language with first-class
+functions, functions are simply
+treated as variables. We can
+pass them into other functions, and
+return them from functions.
+
+Dynamically-typed language
+L> No data type definitions.
+Types become known at runtime.
+- Data type of variable is auto-
+matically changed.
+
+Single-Threaded
+Non-blocking event loop
+- Concurrency model: how the Java-
+script engine handles multiple tasks
+happening at the same time.
+- Javascript runs in one single 
+thread, so it can only do one thing
+at a time.
+- A thread is a set of instructions
+executed in the computer's CPU
+- What if we have a long-running 
+task?
+L> Sounds like it would block the 
+single thread. However, we want
+non-blocking behavior
+- How do we achieve that?
+L> By using an event loop: takes
+long running tasks, executes them 
+in the "background", and puts them 
+back in the main thread once they
+are finished.
+
+
+
+The Javascript engine
+
+What is a Javascript Engine?
+L> a computer program that exec-
+utes Javascript code.
+L> Google's V8 powers Google
+Chrome and node.js
+L> Any Javascript engine contains
+a Call Stack and a Heap.
+- A Call Stack is where our 
+code is executed using something
+called execution contexts.
+- A heap is an unstructured
+memory pool that stores all the
+objects that our application needs.
+
+Compilation Vs. Interpretation
+
+- Compilation: Entire code is
+converted into machine code at
+once, and written into a binary
+file that can be executed by a
+computer.
+Source code
+L> Step 1: Compilation
+Portable file: machine code
+L> Step 2: Program running
+- Execution can happen way
+after compilation
+
+- Interpretation: Interpreter
+runs through the source code
+and executes it line by line.
+Source code
+L> Step 1: Execution line
+by line
+Program running
+- Code still  needs to be con-
+verted into machine code, but
+it happens right before its 
+executed and not ahead of time.
+- Javascript used to be a purely
+interpreted language
+- Trade-off is that programs
+take much longer to run
+- Instead of simple interpretation,
+modern Javascript engines now use
+a mix between compilation and
+interpretation.
+This approach is called JIT comp-
+ilation
+- Just-in-Time (JIT) compilation:
+L> Entire code is converted into
+machine code at once, then exec-
+uted immediately.
+Source code
+L> Step 1: Compilation
+Machine Code (NOT a portable
+file)
+L> Step 2: Execution
+(happens immediately)
+Program running 
+
+
+Modern Just-In-Time Compilation 
+Of Javascript
+
+Step 1: parse/read the code
+L> Parsed into a data struct-
+ure called the abstract syn-
+tax tree or AST.
+
+Step 2: Compilation (JIT)
+L> Takes this AST and translates
+it into machine code
+
+Step 3: Execution
+L> This machine code gets
+executed right away.
+L> Execution happens in the
+Javascript engine's call stack.
+
+Modern Javascript engines
+create a very unoptimized 
+version of machine code 
+in the begining, just so it
+can start executing as fast
+as possible.
+Then, in the background, 
+this code is being opt-
+imized and recompiled during
+the already running program
+execution.
+
+Javascript Runtime 
+L> The most common one is 
+the browser
+L> A big box/container which
+includes all the things that
+we need to use Javascript
+- At the heart of any Javascript
+runtime is the Javascript
+engine.
+- We also need access to the
+web APIs
+L> That's everything related
+to the DOM, timers, console
+.log, etc.. 
+L> APIs are functionalities
+provided to the engine
+but which ar not part of
+the Javascript language 
+itself.
+L> Javascript gets access
+to these APIs through the 
+global window object.
+L> Web APIs are also part
+of the runtime. 
+- A Javascript runtime
+also include a callback
+queue.
+L> A data structure that
+contains all the callback
+functions that are ready to 
+be executed.
+L> We attach event handler
+functions to DOM elements,
+like a button, to react to
+certain events.
+L> These event handler func-
+tions are also called call-
+back functions.
+L> When a button is clicked,
+for example, a call-back
+function will be called.'
+L> After the event, the 
+call-back function is put
+into the call-back queue.
+L> When the call stack is
+empty, the call-back func-
+tion is passed to the stack,
+so that it can be executed.
+L> Happens by the event loop.
+L> The event loops takes 
+call-back functions from the
+call-back queue and puts them
+in the call stack, so that 
+they can be executed.
+
+Runtimes can exist outside 
+the browser, as is the case
+with Node.js
+
+
+
+Execution Contexts and the Call Stack
+
+- How is Javascript code executed?
+- It happens in the call stack
+in the engine.
+- Suppose our code just finished compiling.
+L> It's now ready to be executed.
+L> A global execution context is created
+for the top-level code.
+L> Top-level code is code that is not 
+inside any function.
+L> In the begining, only code that is 
+outside of functions will be executed.
+
+- Execution Context: 
+Environment in which a piece of Javascript
+is executed. Stores all the necessary
+information for some code to be executed.
+L> Javascript code always runs inside
+an execution context.
+
