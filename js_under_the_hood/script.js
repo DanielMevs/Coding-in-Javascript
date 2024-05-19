@@ -1,5 +1,6 @@
 'use strict';
 
+/*
 function calcAge(birthYear) {
   const age = 2037 - birthYear;
   console.log(firstName);
@@ -38,3 +39,49 @@ const firstName = 'John';
 calcAge(1991);
 // console.log(age);
 // printAge();
+*/
+// this in the global scope
+// is just the window object
+// console.log(this);
+
+// this in the function scope
+// is undefined
+const calcAge = function (birthYear) {
+  console.log(2037 - birthYear);
+  console.log(this);
+};
+// calcAge(1991);
+
+// this in an arrow function uses
+// its parent scope (lexical this
+// keyword)
+const calcAgeArrow = birthYear => {
+  console.log(2037 - birthYear);
+  console.log(this);
+};
+
+// calcAgeArrow(1980);
+
+const john = {
+  year: 1991,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+  },
+};
+john.calcAge();
+
+const matilda = {
+  year: 2017,
+};
+
+// Method borrowing
+matilda.calcAge = john.calcAge;
+
+console.log(matilda);
+
+matilda.calcAge();
+
+const f = john.calcAge;
+
+f();
