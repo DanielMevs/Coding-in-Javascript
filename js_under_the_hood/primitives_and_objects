@@ -1,0 +1,59 @@
+Primitives
+Primitive Types
+
+- Number
+- String
+- Boolean
+- Undefined
+- Null
+- Symbol
+- BigInt
+
+Objects
+Reference Types
+
+- Object literals
+- Arrays
+- Functions
+- More...
+
+The Javascript engine has two
+components
+
+- Call stack
+  L> Where functions are executed
+- Heap
+  L> Where objects are stored in memory
+
+Primitive types are stored
+on the call Stack
+L> When a variable is declared,
+an identifier, denoted by the
+variables name, is created and
+a memory slot is allocated.
+An address is where this
+allocated memory slot is located.
+The value is the value that is
+stored at this memory address.
+
+When a new object, or reference
+type, is created, it is stored
+in the heap.
+An identifier is created pointing
+to a new piece of memory (a new
+address) in the stack. The value
+stored at this address is a
+reference to the memory address
+in the heap.
+When we create a new object, an
+identifier is created which points
+to a piece of memory in the stack,
+which points to a piece of memory
+in the heap.
+The object is actually stored in
+the heap.
+
+It's a misconception that all variables
+declared with const are immutable
+L> Only true for primitive values
+but not reference values

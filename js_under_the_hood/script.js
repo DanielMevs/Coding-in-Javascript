@@ -88,7 +88,7 @@ const f = john.calcAge;
 f();
 */
 // var firstName = 'Matilda';
-
+/*
 const john = {
   firstName: 'John',
   year: 1991,
@@ -138,3 +138,21 @@ var addArrow = (a, b) => {
   return a + b;
 };
 // addArrow(2, 5, 8);
+*/
+
+// primitives
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age);
+console.log(oldAge);
+
+const me = {
+  name: 'John',
+  age: 30,
+};
+
+const friend = me;
+friend.age = 27;
+console.log('friend', friend);
+console.log('me', me);
