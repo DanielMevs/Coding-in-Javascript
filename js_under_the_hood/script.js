@@ -139,7 +139,7 @@ var addArrow = (a, b) => {
 };
 // addArrow(2, 5, 8);
 */
-
+/*
 // primitives
 let age = 30;
 let oldAge = age;
@@ -156,3 +156,49 @@ const friend = me;
 friend.age = 27;
 console.log('friend', friend);
 console.log('me', me);
+*/
+
+// Primitive types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log(lastName);
+console.log(oldLastName);
+
+// Reference types
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+};
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('Before marriage: ', jessica);
+console.log('After marriage', marriedJessica);
+
+// Copying objects
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
+};
+
+// Merge an empty object with jessica2
+// and assign jessicaCopy with the result object
+// A new objects gets created in the heap and
+// jessicaCopy is pointing to that object
+// Object.assign() produces a shallow copy,
+// meaning if one of the object's attributes
+// is an object, that nested object will still
+// point to the old place on the heap
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis';
+console.log('Jessica 2: ', jessica2);
+console.log('Jessica copy', jessicaCopy);
+
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+
+console.log('Jessica 2: ', jessica2);
+console.log('Jessica copy', jessicaCopy);
