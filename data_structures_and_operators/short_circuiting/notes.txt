@@ -1,0 +1,12 @@
+Short-circuiting
+If we or two values and the first
+value is a truthy value, it will
+immediately return that truthy 
+value
+
+If the first value is a falsey and
+the second is a truthy, the truthy
+value value will get evaluated.
+
+If they are both falsey, the last
+value gets evaluated.
