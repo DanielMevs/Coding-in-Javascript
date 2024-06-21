@@ -33,14 +33,22 @@ GOOD LUCK 😀
 const getCamelCase = function () {
   const text = document.querySelector('textarea').value;
   const allWords = text.split('\n');
-
-  for (let [i, wordText] of allWords.entries()) {
-    const [first, second] = wordText.toLowerCase().trim().split('_');
-    const output = `${first}${second.replace(
-      second[0],
-      second[0].toUpperCase()
-    )}`;
-    console.log(output.padEnd(20, ' ') + '✅'.repeat(i + 1));
+  let index = 1;
+  const defaultSpacing = 20;
+  for (let wordText of allWords) {
+    const words = wordText.split('_');
+    if (words.length === 2) {
+      let result =
+        words[0].toLowerCase() +
+        words[1][0].toUpperCase() +
+        words[1].slice(1).toLowerCase();
+      result = result.trim();
+      let numOfSpaces = defaultSpacing - result.length;
+      result += ' '.repeat(numOfSpaces);
+      result += '✅'.repeat(index);
+      console.log(result);
+      index++;
+    }
   }
 
   //   return result;
@@ -50,3 +58,5 @@ document.body.append(document.createElement('button'));
 
 const btnEle = document.querySelector('button');
 btnEle.addEventListener('click', getCamelCase);
+
+// const text = document.querySelector('textarea').value;
