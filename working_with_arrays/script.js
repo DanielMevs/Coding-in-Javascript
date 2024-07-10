@@ -61,20 +61,31 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-const displayMovements = function (movements) {
-  containerMovements.innerHTML = '';
-  movements.forEach(function (mov, i) {
-    const type = mov > 0 ? 'deposit' : 'withdrawl';
-    const html = `<div class="movements__row">
-    <div class="movements__type movements__type--deposit">${i + 1}${type}</div>
-    <div 
-    <div class="movements__value">${mov}</div>
-  </div>`;
+// const displayMovements = function (movements) {
+//   containerMovements.innerHTML = '';
+//   movements.forEach(function (mov, i) {
+//     const type = mov > 0 ? 'deposit' : 'withdrawl';
+//     const html = `<div class="movements__row">
+//     <div class="movements__type movements__type--deposit">${i + 1}${type}</div>
+//     <div
+//     <div class="movements__value">${mov}</div>
+//   </div>`;
 
-    containerMovements.insertAdjacentHTML('afterbegin', html);
-  });
-};
-displayMovements(account1.movements);
+//     containerMovements.insertAdjacentHTML('afterbegin', html);
+//   });
+// };
+// displayMovements(account1.movements);
+
+const user = 'Steven Thomas Williams'; //stw
+const username = user
+  .toLowerCase()
+  .split(' ')
+  .map(name => name[0])
+  .join('');
+console.log(username);
+
+// console.log(createUsernames('Steven Thomas Williams'));
+
 // console.log(containerMovements.innerHTML);
 
 /////////////////////////////////////////////////
@@ -236,14 +247,14 @@ const eurToUsd = 1.1;
 //   return mov * eurToUsd;
 // });
 
-const movementsUSD = new movements.map(mov => mov * eurToUsd);
+// const movementsUSD = new movements.map(mov => mov * eurToUsd);
 
-console.log(movements);
-console.log(movementsUSD);
+// console.log(movements);
+// console.log(movementsUSD);
 
-const movementsUSDfor = [];
-for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
-console.log(movementsUSDfor);
+// const movementsUSDfor = [];
+// for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+// console.log(movementsUSDfor);
 
 const movementsDescriptions = movements.map(
   (mov, i) =>
@@ -253,3 +264,34 @@ const movementsDescriptions = movements.map(
 );
 
 console.log(movementsDescriptions);
+
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = '';
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawl';
+    const html = `<div class="movements__row">
+    <div class="movements__type movements__type--deposit">${i + 1}${type}</div>
+    <div 
+    <div class="movements__value">${mov}</div>
+  </div>`;
+
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+displayMovements(account1.movements);
+
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner;
+    const username = user
+      .toLowerCase()
+      .split('url ')
+      .map(name => name[0])
+      .join('');
+    return username;
+  });
+};
+createUsernames(accounts);
+console.log(accounts);
+
+console.log(createUsernames('John William Smith'));
