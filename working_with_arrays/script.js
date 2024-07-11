@@ -255,7 +255,7 @@ const eurToUsd = 1.1;
 // const movementsUSDfor = [];
 // for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
 // console.log(movementsUSDfor);
-
+/*
 const movementsDescriptions = movements.map(
   (mov, i) =>
     `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
@@ -295,3 +295,18 @@ createUsernames(accounts);
 console.log(accounts);
 
 console.log(createUsernames('John William Smith'));
+*/
+
+const deposits = movements.filter(function (mov, i, arr) {
+  return mov > 0;
+});
+
+console.log(movements);
+console.log(deposits);
+
+const depositsFor = [];
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+console.log(depositsFor);
+
+const withdrawls = movements.filter(mov => mov < 0);
+console.log(withdrawls);
