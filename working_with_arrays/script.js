@@ -82,7 +82,7 @@ const username = user
   .split(' ')
   .map(name => name[0])
   .join('');
-console.log(username);
+// console.log(username);
 
 // console.log(createUsernames('Steven Thomas Williams'));
 
@@ -315,7 +315,7 @@ const calcDisplaySummary = function (movements) {
     .filter(mov => mov > 0)
     .map(deposit => (deposit * 1.2) / 100)
     .filter((int, i, arr) => {
-      console.log(arr);
+      // console.log(arr);
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
@@ -343,7 +343,7 @@ console.log(depositsFor);
 const withdrawls = movements.filter(mov => mov < 0);
 console.log(withdrawls);
 */
-console.log(movements);
+// console.log(movements);
 
 // accumulator -> Snowball
 // const balance = movements.reduce(function (acc, curr, i, arr) {
@@ -351,18 +351,18 @@ console.log(movements);
 //   return acc + curr;
 // }, 0);
 const balance = movements.reduce((acc, curr) => acc + curr, 0);
-console.log(balance);
+// console.log(balance);
 
 let balance2 = 0;
 for (const mov of movements) balance2 += mov;
-console.log(balance2);
+// console.log(balance2);
 
 // Maximum value
 const max = movements.reduce((acc, mov) => {
   if (acc > mov) return acc;
   else return mov;
 }, movements[0]);
-console.log(max);
+// console.log(max);
 
 ///////////////////////////////////////
 // Coding Challenge #2
@@ -407,9 +407,31 @@ const eurToUsd = 1.1;
 const totalDepositsUSD = movements
   .filter(mov => mov > 0)
   .map((mov, i, arr) => {
-    console.log(arr);
+    // console.log(arr);
     return mov * eurToUsd;
   })
   .reduce((acc, mov) => acc + mov, 0);
 
-console.log(totalDepositsUSD);
+// console.log(totalDepositsUSD);
+
+///////////////////////////////////////
+// Coding Challenge #3
+
+/* 
+Rewrite the 'calcAverageHumanAge' function from the previous challenge, but this time as an arrow function, and using chaining!
+
+TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
+TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
+
+GOOD LUCK 😀
+*/
+const calcAverageHumanAge = ages =>
+  ages
+    .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+    .filter(age => age >= 18)
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+
+const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+
+console.log(avg1, avg2);
