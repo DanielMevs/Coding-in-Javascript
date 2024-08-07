@@ -318,16 +318,33 @@ btnLogin.addEventListener('click', function (e) {
     displayMovements(currentAccount.movements);
 
     // Display balance
-    calcDisplayBalance(currentAccount.movements);
+    calcDisplayBalance(currentAccount);
 
     // Display summary
     calcDisplaySummary(currentAccount);
   }
 });
 
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance}€`;
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(
+    acc => acc.username == inputTransferTo.value
+  );
+  console.log(amount, receiverAcc);
+  if (
+    amount > 0 &&
+    currentAccount.balance >= amount &&
+    receiverAcc?.username !== currentAccount.username
+  ) {
+    console.log('Transfer valid');
+  }
+});
+
+const calcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+
+  labelBalance.textContent = `${acc.balance}€`;
 };
 
 // calcDisplayBalance(account1.movements);
