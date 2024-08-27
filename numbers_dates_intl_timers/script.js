@@ -398,26 +398,71 @@ const convertTitleCase = function (title) {
 // console.log((2.345).toFixed(2));
 // console.log(+(2.345).toFixed(2));
 
-console.log(5 % 2);
-console.log(5 / 2);
+// console.log(5 % 2);
+// console.log(5 / 2);
 
-console.log(8 % 3);
-console.log(8 / 3);
+// console.log(8 % 3);
+// console.log(8 / 3);
 
-console.log(6 % 2);
-console.log(6 / 2);
+// console.log(6 % 2);
+// console.log(6 / 2);
 
-console.log(7 % 2);
-console.log(7 / 2);
+// console.log(7 % 2);
+// console.log(7 / 2);
 
-const isEven = n => n % 2 == 0;
-console.log(isEven(8));
-console.log(isEven(23));
-console.log(isEven(514));
+// const isEven = n => n % 2 == 0;
+// console.log(isEven(8));
+// console.log(isEven(23));
+// console.log(isEven(514));
 
-labelBalance.addEventListener('click', function () {
-  [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
-    if (i % 2 === 0) row.style.backgroundColor = 'orangered';
-    if (i % 3 === 0) row.style.backgroundColor = 'blue';
-  });
-});
+// labelBalance.addEventListener('click', function () {
+//   [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+//     if (i % 2 === 0) row.style.backgroundColor = 'orangered';
+//     if (i % 3 === 0) row.style.backgroundColor = 'blue';
+//   });
+// });
+
+// const diameter = 287_460_000_000;
+// console.log(diameter);
+
+// const priceCents = 345_99;
+// console.log(priceCents);
+
+// const transferFee1 = 15_00;
+// const transferFee2 = 1_500;
+// console.log(transferFee1);
+// console.log(transferFee2);
+
+// const PI = 3.1415;
+// console.log(PI);
+
+// console.log(Number('230_000'));
+// console.log(parseInt('230_000'));
+
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2 ** 53 + 1);
+console.log(2 ** 53 + 2);
+console.log(2 ** 53 + 3);
+console.log(2 ** 53 + 4);
+
+console.log(4632435436542656546546546546546546n);
+console.log(BigInt(4632435));
+
+// Operations
+console.log(1000n + 1000n);
+console.log(5423542154354325n * 234324324n);
+// console.log(Math.sqrt(16n));
+
+const huge = 3945920394532534205423n;
+const num = 23;
+console.log(huge * BigInt(num));
+
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(typeof 20n);
+console.log(20n == '20');
+
+console.log(huge + 'is REALLY big!!!!');
+console.log(11n / 3n);
+console.log(10 / 3);
