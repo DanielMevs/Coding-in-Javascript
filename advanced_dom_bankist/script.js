@@ -31,86 +31,133 @@ document.addEventListener('keydown', function (e) {
 });
 ////////////////////
 
-console.log(document.documentElement);
-console.log(document.head);
-console.log(document.body);
+// console.log(document.documentElement);
+// console.log(document.head);
+// console.log(document.body);
 
-const header = document.querySelector('.header');
-const allSections = document.querySelectorAll('.section');
-console.log(allSections);
+// const header = document.querySelector('.header');
+// const allSections = document.querySelectorAll('.section');
+// console.log(allSections);
 
-document.getElementById('section--1');
-const allButtons = document.getElementsByTagName('button');
-console.log(allButtons);
+// document.getElementById('section--1');
+// const allButtons = document.getElementsByTagName('button');
+// console.log(allButtons);
 
-console.log(document.getElementsByClassName('btn'));
+// console.log(document.getElementsByClassName('btn'));
 
-// Creating and inserting elements
-// .insertAdjacentHTML
-const message = document.createElement('div');
-message.classList.add('cookie-message');
-// message.textContent = 'We use cookies for improved functionality and analytics';
-message.innerHTML =
-  'We use cookies for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
+// // Creating and inserting elements
+// // .insertAdjacentHTML
+// const message = document.createElement('div');
+// message.classList.add('cookie-message');
+// // message.textContent = 'We use cookies for improved functionality and analytics';
+// message.innerHTML =
+//   'We use cookies for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
 
-// header.prepend(message);
-header.append(message);
-// header.append(message.cloneNode(true));
+// // header.prepend(message);
+// header.append(message);
+// // header.append(message.cloneNode(true));
 
-// header.before(message);
-// header.after(message);
-document
-  .querySelector('.btn--close-cookie')
-  .addEventListener('click', function () {
-    // message.remove();
-    message.parentElement.removeChild(message);
-  });
+// // header.before(message);
+// // header.after(message);
+// document
+//   .querySelector('.btn--close-cookie')
+//   .addEventListener('click', function () {
+//     // message.remove();
+//     message.parentElement.removeChild(message);
+//   });
 
-// Styles
-message.style.backgroundColor = '#37383d';
-message.style.width = '120%';
+// // Styles
+// message.style.backgroundColor = '#37383d';
+// message.style.width = '120%';
 
-// console.log(message.style.height);
-console.log(message.style.color);
-console.log(message.style.backgroundColor);
+// // console.log(message.style.height);
+// console.log(message.style.color);
+// console.log(message.style.backgroundColor);
 
-console.log(getComputedStyle(message).color);
-console.log(getComputedStyle(message).height);
+// console.log(getComputedStyle(message).color);
+// console.log(getComputedStyle(message).height);
 
-message.style.height =
-  Number.parseFloat(getComputedStyle(message).height, 10) + 40 + 'px';
+// message.style.height =
+//   Number.parseFloat(getComputedStyle(message).height, 10) + 40 + 'px';
 
-document.documentElement.style.setProperty('--color-primary', 'orangered');
+// document.documentElement.style.setProperty('--color-primary', 'orangered');
 
-// Attributes
-const logo = document.querySelector('.nav__logo');
-console.log(logo.alt);
+// // Attributes
+// const logo = document.querySelector('.nav__logo');
+// console.log(logo.alt);
+// // console.log(logo.src);
+// console.log(logo.className);
+
+// logo.alt = 'Beautiful minimalist logo';
+
+// // Non-standard
+// console.log(logo.designer);
+// console.log(logo.getAttribute('designer'));
+// logo.setAttribute('company', 'Bankist');
+
 // console.log(logo.src);
-console.log(logo.className);
+// console.log(logo.getAttribute('src'));
 
-logo.alt = 'Beautiful minimalist logo';
+// const link = document.querySelector('.nav__link--btn');
 
-// Non-standard
-console.log(logo.designer);
-console.log(logo.getAttribute('designer'));
-logo.setAttribute('company', 'Bankist');
+// console.log(link.href);
+// console.log(link.getAttribute('href'));
 
-console.log(logo.src);
-console.log(logo.getAttribute('src'));
+// // Data attributes
+// console.log(logo.dataset.versionNumber);
 
-const link = document.querySelector('.nav__link--btn');
+// // Classes
+// logo.classList.add('c', 'j');
+// logo.classList.remove('c', 'j');
+// logo.classList.toggle('c');
+// logo.classList.contains('c'); // not includes
 
-console.log(link.href);
-console.log(link.getAttribute('href'));
+// // Don't use
+// logo.className = 'jonas';
 
-// Data attributes
-console.log(logo.dataset.versionNumber);
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
 
-// Classes
-logo.classList.add('c', 'j');
-logo.classList.remove('c', 'j');
-logo.classList.toggle('c');
-logo.classList.contains('c'); // not includes
+btnScrollTo.addEventListener('click', function (e) {
+  // const s1coords = section1.getBoundingClientRect();
+  // console.log(s1coords);
+  // console.log(e.target.getBoundingClientRect());
+  // console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
+  // console.log(
+  //   'height/width viewport',
+  //   document.documentElement.clientHeight,
+  //   document.documentElement.clientWidth
+  // );
 
-// Don't use
-logo.className = 'jonas';
+  // Scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+// addEventListener allows us to add mulitple event listeners
+// to the same event
+const h1 = document.querySelector('h1');
+
+const alertH1 = function (e) {
+  alert('addEventListener: Great! You are reading the heading :D');
+
+  h1.removeEventListener('mouseenter', alertH1);
+};
+
+h1.addEventListener('mouseenter', alertH1);
+
+setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
+
+// If we tried to add another event listener using this method,
+// the second event listener would override the first
+// h1.onmouseenter = function (e) {
+//   alert('addEventListener: Great! You are reading the heading :D');
+// };
