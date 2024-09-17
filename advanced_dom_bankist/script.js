@@ -239,12 +239,6 @@ const slider = function () {
   let curSlide = 0;
   const maxSlide = slides.length;
 
-  // const slider = document.querySelector('.slider');
-  // slider.style.transform = 'scale(0.4) translateX(-800px)';
-  // slider.style.overflow = 'visible';
-
-  // slides.forEach((s, i) => (s.style.transform = `translateX(${100 * i}%)`));
-
 
   // Functions
   const createDots = function () {
@@ -482,4 +476,18 @@ slider();
 // console.log(h1.parentElement.children);
 // [...h1.parentElement.children].forEach(function (el) {
 //   if (el !== h1) el.style.transform = 'scale(0.5)';
+// });
+
+document.addEventListener('DOMContentLoaded', function (e) {
+  console.log('HTML parsed and DOM tree built!', e);
+});
+
+window.addEventListener('load', function (e) {
+  console.log('Page fully loaded', e);
+});
+
+// window.addEventListener('load', function (e) {
+//   preventDefault();
+//   console.log('Page fully loaded', e);
+//   e.returnValue = '';
 // });
