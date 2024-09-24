@@ -436,3 +436,186 @@ const jay = Object.create(StudentProto);
 jay.init('Jay', 2010, 'Computer Science');
 jay.introduce();
 jay.calcAge();
+
+//1.  Public fields
+//2.  Private fields
+// Public methods
+// Private methods
+
+class Account {
+  // 1. Public fields (instances)
+  locale = navigator.language;
+
+  // 2. Private fields
+  #movements = [];
+  #pin;
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    // Protected property
+    this.#pin = pin;
+    // this._movements = [];
+    // this.locale = navigator.language;
+
+    console.log(`Thanks for opening an account, ${owner}`);
+  };
+  // 3. Public methods
+  // Public interface
+  getMovements() {
+    return this.#movements;
+  }
+
+  deposit(val) {
+    this.#movements.push(val);
+    return this;
+  }
+
+  withdraw(val) {
+    this.deposit(-val);
+    return this
+  }
+
+  requestLoan(val) {
+    if (this._approveLoan(val)) {
+      this.deposit(val);
+      console.log('Loan approved');
+      return this;
+    }
+  }
+
+  static helper() {
+    console.log('Helper');
+  } 
+
+  // 4. Private methods
+  _approveLoan(val) {
+    return true;
+  }
+}
+
+const acc1 = new Account('Jonas', 'EUR', 1111);
+
+acc1.deposit(250);
+acc1.withdraw(140);
+acc1.requestLoan(1000);
+acc1._approveLoan(1000);
+
+console.log(acc1);
+console.log(acc1.pin);
+
+console.log(acc1.getMovements());
+
+Account.helper();
+
+// Chaining
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(2500).withdraw(4000);
+
+console.log(acc1.getMovements());
+
+class StudentCl extends PersonCl {
+  university = 'Oxford';
+  #studyHours = 0;
+  #course;
+  static numSubjects = 10;
+
+  constructor(fullName, birthYear, startYear, course) {
+    super(fullName, birthYear);
+    this.startYear = startYear;
+    this.#course = course;
+  }
+  introduce() {
+    console.log(`I study ${this.#course} at ${this.university}`);
+  }
+
+  study(h) {
+    this.#makeCoffee();
+    this.#studyHours += h;
+  }
+
+  #makeCoffee() {
+    console.log('Here is some coffee ☕');
+  }
+
+  get testScore() {
+    return this._testScore;
+  }
+
+  set testScore(score) {
+    this._testScore = score;
+  }
+
+  static printCurriculum() {
+    console.log(`There are ${this.numSubjects} subjects`);
+  }
+}
+
+const student = new Student('Jay Martin', 2010, 2020, 'Medicine');
+
+
+///////////////////////////////////////
+// Coding Challenge #4
+
+/* 
+1. Re-create challenge #3, but this time using ES6 classes: create an 'EVCl' child class of the 'CarCl' class
+2. Make the 'charge' property private;
+3. Implement the ability to chain the 'accelerate' and 'chargeBattery' methods of this class, and also update the 'brake' method in the 'CarCl' class. They experiment with chining!
+
+DATA CAR 1: 'Rivian' going at 120 km/h, with a charge of 23%
+
+GOOD LUCK 😀
+*/
+
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+    return this.accelerate;
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+    return this;
+  }
+
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
+  }
+}
+
+class EVCl extends CarCl {
+  #charge;
+
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    return this;
+  }
+
+  accelerate() {
+    this.speed += 20;
+    this.#charge--;
+    console.log(`${this.make} going at ${this.speed} km/h, with a charge of ${this.#charge}%`);
+    return this;
+  }
+}
+
+const rivian = new EVCl('Rivian', 120, 23);
+console.log(rivian);
+rivian.accelerate().accelerate().brake().chargeBattery(90).accelerate();
+
+console.log(rivian.speedUS);
