@@ -3,19 +3,10 @@
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
-///////////////////////////////////////
-const getCountryData = function (country) {
-    const request = new XMLHttpRequest();
-    request.open('GET', `https://restcountries.com/v3.1/name/${country}`);
-    request.send();
+const renderCountry = function(data, className = '') {
+    const html = `
 
-    request.addEventListener('load', function () {
-        const [data] = JSON.parse(this.responseText);
-        console.log(data);
-        
-        const html = `
-
-        <article class="country">   
+        <article class="country ${className}">   
             <img class="country__img" src="${data.flags.png}" />
             <div class="country__data">
                 <h3 class="country__name">${data.name.common}</h3>
@@ -29,8 +20,36 @@ const getCountryData = function (country) {
         
         countriesContainer.insertAdjacentHTML('beforeend', html);
         countriesContainer.style.opacity = 1;
+}
+
+///////////////////////////////////////
+const getCountryAndNeighbor = function (country) {
+    // AJAX call country 1
+    const request = new XMLHttpRequest();
+    request.open('GET', `https://restcountries.com/v3.1/name/${country}`);
+    request.send();
+
+    request.addEventListener('load', function () {
+        const [data] = JSON.parse(this.responseText);
+        console.log(data);
+        renderCountry(data);
+        
+        // Get neighbor country (2nd request) 
+        const neighbor = data.borders?.[0];
+
+        if (!neighbor) return;
+
+        // AJAX call country 2
+        const request2 = new XMLHttpRequest();
+        request2.open('GET', `https://restcountries.com/v3.1/alpha/${neighbor}`);
+        request2.send();
+
+        request2.addEventListener('load', function () {
+            const [data2] = JSON.parse(this.responseText);
+            renderCountry(data2, 'neighbor');
+        });
     });
 };
-getCountryData('usa');
-getCountryData('portugal');
-getCountryData('germany');
+
+// getCountryAndNeighbor('portugal');
+getCountryAndNeighbor('usa');
