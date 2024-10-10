@@ -30,7 +30,7 @@ console.log(cart);
 // const data = await res.json()
 // console.log(data);
 // console.log('Something');
-
+/*
 const getLastPost = async function() {
     const res = await fetch('https://jsonplaceholder.typicode.com/posts');
     const data = await res.json();
@@ -47,3 +47,56 @@ console.log(lastPost);
 
 const lastPost2 = await getLastPost();
 console.log(lastPost2);
+*/
+/*
+const ShoppingCart2 = (function(){
+    const cart = [];
+    const shippingCost = 10;
+    const totalPrice = 237;
+    const totalQuantity = 23;
+
+    const addToCart = function(product, quantity){
+        cart.push({product, quantity});
+        console.log(`${quantity} ${product} added to cart`);
+    }
+
+    const orderStock = function(product, quantity){
+        console.log(`${quantity} ${product} ordered from supplier`);
+    }
+    return {
+        addToCart,
+        cart,
+        totalPrice,
+        totalQuantity,
+    }
+})();
+
+ShoppingCart2.addToCart('apple', 4);
+ShoppingCart2.addToCart('pizza', 2);
+console.log(ShoppingCart2);
+console.log(ShoppingCart2.shippingCost);
+*/
+
+import cloneDeep from 'lodash-es';
+
+const state = {
+    cart: [
+        {product: 'bread', quantity: 5},
+        {product: 'pizza', quantity: 5},
+    ],
+    user: {loggedIn: true}
+};
+
+const stateClone = Object.assign({}, state);
+console.log(stateClone);
+
+state.user.loggedIn = false;
+
+console.log(stateClone);
+const stateDeepClone = cloneDeep(state);
+
+console.log(stateDeepClone);
+
+if(module.hot){
+    module.hot.accept();
+}
